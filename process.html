@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Our Process — Aqizo International</title>
+  <meta name="description" content="Discover our meticulous process of bringing you the finest quality spices and rice from farm to table." />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#0b5d3b;
+      --gold:#c5a34a;
+      --cream:#f6f4ee;
+      --dark:#0a1f12;
+      --text:#1a1a1a;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;color:var(--text);line-height:1.6;background:#fff;overflow-x:hidden}
+
+    /* layout */
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    section{padding:72px 0;}
+
+    /* topbar + nav */
+    .topbar{background:var(--green);color:#e9f3ee;font-size:14px}
+    .topbar .container{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 20px}
+    .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
+    .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:10px;align-items:center}
+    .menu{display:flex;gap:22px}
+    .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease}
+    .menu a:hover{color:var(--green)}
+    .menu a.active{background-color: var(--green); color: white; opacity: 1}
+    .menu a.active:hover{background-color: #09482a;}
+
+    /* section titles */
+    .k{letter-spacing:.28em;text-transform:uppercase;font-size:12px;opacity:.9}
+    .title{font-size:32px;margin:6px 0 10px;color:var(--dark)}
+    .sub{opacity:.8}
+
+    /* process section */
+    .process-hero {
+      background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      text-align: center;
+      padding: 120px 20px;
+      margin-bottom: 60px;
+    }
+    
+    .process-hero h1 {
+      font-size: 3rem;
+      margin: 0 0 20px;
+      color: white;
+    }
+    
+    .process-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.9;
+    }
+    
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 50px 0;
+      padding: 0 20px;
+    }
+    
+    .process-step {
+      background: white;
+      border-radius: 12px;
+      padding: 40px 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    
+    .process-step.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .process-step:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    
+    .process-step .step-number {
+      width: 80px;
+      height: 80px;
+      background-color: var(--green);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 25px;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .process-step h3 {
+      text-align: center;
+      margin-bottom: 15px;
+      color: var(--dark);
+      font-size: 1.5rem;
+    }
+    
+    .process-step p {
+      text-align: center;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .process-hero {
+        padding: 80px 20px;
+      }
+      
+      .process-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .process-step {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      <div>aqizointernational11@gmail.com</div>
+      <div>+91 84870 27771 • +91 91041 41300</div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container">
+      <div class="brand">
+        <img src="aql.png" alt="Aqizo International" style="height: 40px; width: auto;">
+      </div>
+      <div class="menu">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="process.html" class="active">Our Process</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="process-hero">
+    <h1>Our Process</h1>
+    <p>Discover how we bring you the finest quality spices and rice from farm to table</p>
+  </header>
+
+  <!-- Process Steps -->
+  <main class="container">
+    <div class="process-grid">
+      <!-- Step 1 -->
+      <div class="process-step">
+        <div class="step-number">1</div>
+        <h3>Harvest</h3>
+        <p>We carefully harvest mature crops at peak ripeness, ensuring maximum quality and nutritional value in every grain.</p>
+      </div>
+      
+      <!-- Step 2 -->
+      <div class="process-step">
+        <div class="step-number">2</div>
+        <h3>Milling</h3>
+        <p>Our state-of-the-art milling process carefully removes the outer husk while preserving the grain's natural nutrients and distinctive aroma.</p>
+      </div>
+      
+      <!-- Step 3 -->
+      <div class="process-step">
+        <div class="step-number">3</div>
+        <h3>Processing</h3>
+        <p>Each grain undergoes multiple stages of cleaning, sorting, and polishing to meet our exacting standards of quality and purity.</p>
+      </div>
+      
+      <!-- Step 4 -->
+      <div class="process-step">
+        <div class="step-number">4</div>
+        <h3>Color Sorting</h3>
+        <p>Advanced color sorting technology ensures only the finest quality rice reaches you, with consistent color, size, and texture in every batch.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Add animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const processSteps = document.querySelectorAll('.process-step');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+      
+      processSteps.forEach(step => {
+        observer.observe(step);
+      });
+    });
+  </script>
+</body>
+</html>

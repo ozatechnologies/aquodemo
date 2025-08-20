@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Aqizo International — Spices & Rice Export</title>
+<meta name="description" content="Aqizo International exports premium Indian spices and rice worldwide. 100% natural. Pure veg." />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --green:#0b5d3b;
+    --gold:#c5a34a;
+    --cream:#f6f4ee;
+    --dark:#0a1f12;
+    --text:#1a1a1a;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Inter,Helvetica,Arial,sans-serif;color:var(--text);line-height:1.6;background:#fff;overflow-x:hidden}
+
+  /* layout */
+  .container{max-width:1200px;margin:0 auto;padding:0 20px}
+  section{scroll-margin-top:84px}
+
+  /* topbar + nav */
+  .topbar{background:var(--green);color:#e9f3ee;font-size:14px}
+  .topbar .container{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 20px}
+  .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
+  .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between}
+  .brand{display:flex;gap:10px;align-items:center}
+  .brand strong{color:var(--green);font-weight:700;letter-spacing:.3px}
+  .menu{display:flex;gap:22px}
+  .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease}
+  .menu a:hover{color:var(--green)}
+  .menu a[href="#contact"]{background-color: var(--green); color: white; opacity: 1}
+  .menu a[href="#contact"]:hover{background-color: #09482a; color: white}
+  .btn{display:inline-block;background:var(--green);color:#fff;border:1px solid var(--green);padding:10px 16px;border-radius:999px;font-weight:600;letter-spacing:.3px}
+  .btn.alt{background:transparent;color:var(--green)}
+
+  /* hero slideshow */
+  header.hero{position:relative;min-height:88vh;color:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
+  .slide.active{opacity:1}
+  .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25))}
+  .hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 20px;opacity:0;transform:translateY(12px);transition:opacity .8s ease, transform .8s ease}
+  .hero-content.show{opacity:1;transform:translateY(0)}
+  .kicker{letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.95;font-size:12px}
+  h1{margin:.35rem 0 1rem;font-size:42px;line-height:1.15;color:#fff}
+  .hero p{margin:.4rem 0 0;font-size:18px;opacity:.95}
+  .hero-cta{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  .hero-cta .btn.alt{background-color:var(--green);color:white;border-color:var(--green);opacity:1}
+  .hero-cta .btn.alt:hover{background-color:#09482a;border-color:#09482a}
+
+  /* section titles */
+  .k{letter-spacing:.28em;text-transform:uppercase;font-size:12px;opacity:.9}
+  .title{font-size:32px;margin:6px 0 10px;color:var(--dark)}
+  .sub{opacity:.8}
+
+  /* about */
+  .about{padding:72px 0;background:#fff}
+  .about .grid{display:grid;gap:28px;grid-template-columns:1.1fr .9fr;align-items:center}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .badge{background:var(--cream);border:1px solid #ece6d9;padding:8px 12px;border-radius:999px;font-size:12px}
+
+  /* product sections */
+  .products{padding:72px 0;background:#fff}
+  .section-head{text-align:center;margin-bottom:16px}
+  .section-head .title{margin-bottom:6px}
+  .lead{max-width:820px;margin:0 auto 26px;text-align:center;color:#333;opacity:.9}
+
+  /* square product grid */
+  .grid-sq{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+  .card{position:relative;border:1px solid #ececec;border-radius:16px;overflow:hidden;background:#fff;transition:transform .25s ease, box-shadow .25s ease}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,.06)}
+  .thumb{aspect-ratio:1/1;background:#f3f3f3;background-size:cover;background-position:center}
+  .card .body{padding:14px}
+  .card h3{font-size:16px;margin:0 0 6px;color:var(--green)}
+  .card p{margin:0;font-size:14px;opacity:.85}
+
+  /* two-wide grids for narrative items */
+  .grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+
+  /* band sections */
+  .band{background:var(--cream);padding:54px 0}
+  .band .stat{background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;text-align:center}
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+
+  /* contact */
+  .contact{padding:72px 0;background:#f8f9f7}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .panel{background:#fff;border:1px solid #eee;border-radius:14px;padding:20px}
+  .panel h3{margin:0 0 10px;color:var(--green)}
+  .panel p{margin:0 0 8px}
+  .form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .form input,.form textarea{width:100%;padding:12px 12px;border:1px solid #e6e6e6;border-radius:10px;font:inherit}
+  .form textarea{min-height:130px;resize:vertical}
+  .form button{margin-top:10px}
+
+  /* footer */
+  .foot{background:#0c2a1b;color:#cfe7db}
+  .foot .container{padding:18px 20px;display:flex;align-items:center;justify-content:space-between;font-size:13px}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* responsive */
+  @media (max-width:1100px){
+    .grid-sq{grid-template-columns:repeat(3,minmax(0,1fr))}
+  }
+  @media (max-width:900px){
+    .about .grid{grid-template-columns:1fr}
+    .grid-2{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .contact-grid{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    h1{font-size:34px}
+    .grid-sq{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+</style>
+</head>
+<body>
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      <div>aqizointernational11@gmail.com</div>
+      <div>+91 84870 27771 • +91 91041 41300</div>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <div class="container">
+      <div class="brand">
+        <img src="aql.png" alt="Aqizo International" style="height: 40px; width: auto;">
+      </div>
+      <div class="menu">
+        <a href="#about">About</a>
+        <a href="products.html">Products</a>
+        <a href="process.html">Our Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero slideshow -->
+  <header class="hero" aria-label="Aqizo slideshow">
+    <!-- Hero Slides -->
+    <div class="slide active" style="background-image:url('https://media.istockphoto.com/id/1147235336/photo/spices-herbs-rice-various-beans-and-seasonings-for-cooking-on-dark-backgraund-with-copy-space.jpg?s=612x612&w=0&k=20&c=EYjKX-fMG4tzIatfUTqTGEwM2uyy3VYiZNffpx6cHtU=');"></div>
+    <div class="slide" style="background-image:url('https://img.freepik.com/premium-photo/directly-shot-various-spices-wooden-table_1048944-20733959.jpg');"></div>
+    <div class="slide" style="background-image:url('https://img.freepik.com/premium-photo/cropped-hand-man-picking-leaves_1048944-23425436.jpg');"></div>
+    <div class="slide" style="background-image:url('https://media.istockphoto.com/id/1147235336/photo/spices-herbs-rice-various-beans-and-seasonings-for-cooking-on-dark-backgraund-with-copy-space.jpg?s=612x612&w=0&k=20&c=EYjKX-fMG4tzIatfUTqTGEwM2uyy3VYiZNffpx6cHtU=');"></div>
+
+    <!-- Caption -->
+    <div class="hero-content" id="heroCaption">
+      <div class="kicker">Aqizo Spices</div>
+      <h1>International Catalogue</h1>
+      <p>Step into a world of spices and aromas. Our vibrant collection is sourced from the heart of India — 100% natural. Pure veg.</p>
+      <div class="hero-cta">
+        <a class="btn" href="products.html">Explore Products</a>
+        <a class="btn" href="process.html">Our Process</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container reveal">
+      <div class="k" style="color:var(--green)">About Aqizo</div>
+      <h2 class="title">Aqizo International</h2>
+      <div class="grid">
+        <div>
+          <p>Aqizo International is a trusted name in the global export of premium Indian spices and agro-products. Based in India, we specialize in delivering high-quality rice, chilli, coriander, cumin, sesame, turmeric and other authentic spices to international markets.</p>
+          <p>With a commitment to purity, flavor and freshness, we ensure every product reflects the rich heritage and taste of Indian agriculture. Our focus on quality, timely delivery and customer satisfaction makes us a reliable partner in the world of spice exports.</p>
+          <div class="badges">
+            <span class="badge">100% Natural</span>
+            <span class="badge">Pure Veg</span>
+            <span class="badge">Premium Quality</span>
+            <span class="badge">Global Reach</span>
+          </div>
+        </div>
+        <div>
+          <div class="card" style="border:none">
+            <img src="aqin.png" alt="Aqizo International Logo" style="width: 100%; height: auto; border-radius: 18px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Navigation Sections -->
+  <section class="navigation-sections" style="padding: 80px 0; background-color: #f9f9f9;">
+    <div class="container">
+      <div class="section-head reveal" style="text-align: center; margin-bottom: 40px;">
+        <div class="k" style="color: var(--green);">Our Offerings</div>
+        <h2 class="title">Explore More</h2>
+        <p class="sub" style="max-width: 700px; margin: 10px auto 0;">Discover our premium products and meticulous production process</p>
+      </div>
+      
+      <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+        <a href="products.html" style="flex: 1; min-width: 280px; max-width: 400px; background: white; border-radius: 16px; padding: 30px; text-align: center; text-decoration: none; color: var(--text); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid #eee;">
+          <div style="width: 80px; height: 80px; background-color: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: white;">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+          </div>
+          <h3 style="color: var(--green); margin-bottom: 15px; font-size: 1.5rem;">Our Products</h3>
+          <p style="color: #666; line-height: 1.6; margin: 0 0 20px 0;">Explore our premium selection of spices and rice</p>
+          <div class="btn" style="display: inline-block; background: var(--green); color: white; padding: 10px 24px; border-radius: 30px; font-weight: 600; transition: all 0.3s ease;">View Products</div>
+        </a>
+        
+        <a href="process.html" style="flex: 1; min-width: 280px; max-width: 400px; background: white; border-radius: 16px; padding: 30px; text-align: center; text-decoration: none; color: var(--text); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.3s ease; border: 1px solid #eee;">
+          <div style="width: 80px; height: 80px; background-color: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: white;">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+          </div>
+          <h3 style="color: var(--green); margin-bottom: 15px; font-size: 1.5rem;">Our Process</h3>
+          <p style="color: #666; line-height: 1.6; margin: 0 0 20px 0;">Discover our meticulous production process</p>
+          <div class="btn" style="display: inline-block; background: var(--green); color: white; padding: 10px 24px; border-radius: 30px; font-weight: 600; transition: all 0.3s ease;">Learn More</div>
+        </a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Contact Section -->
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="k" style="color:var(--gold)">Let's Talk</div>
+      <h2 class="title">Contact Us</h2>
+      <p class="lead">Get in touch with us for inquiries, quotes, or to place an order</p>
+    </div>
+ 
+    <div class="contact-flex">
+      <div class="contact-left">
+        <div class="panel reveal form">
+          <h3>Send a Message</h3>
+          <form id="contactForm">
+            <div class="row">
+              <input type="text" name="name" placeholder="Your Name" required />
+              <input type="email" name="email" placeholder="Your Email" required />
+            </div>
+            <div class="row">
+              <input type="tel" name="phone" placeholder="Your Phone" required />
+              <input type="text" name="company" placeholder="Company (optional)" />
+            </div>
+            <textarea name="message" placeholder="Your Message" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+ 
+      <div class="contact-right">
+        <div class="panel reveal">
+          <h3>Contact Information</h3>
+          <p><strong>Phone:</strong><br />+91 84870 27771<br />+91 91041 41300</p>
+          <p><strong>Email:</strong><br />aqizointernational11@gmail.com</p>
+          <p><strong>Head Office:</strong><br />8A National Highway, Halvad Road, Morbi 2, Gujarat, India</p>
+          <p><strong>Instagram:</strong> <a href="https://www.instagram.com/aqizo_internationalexport/" target="_blank" style="color: var(--green); text-decoration: none;">@aqizo_internationalexport</a></p>
+          <div class="badges" style="margin-top:10px">
+            <span class="badge">FSSAI</span>
+            <span class="badge">ISO</span>
+            <span class="badge">HACCP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>
+  
+<!-- About Us Section -->
+<section id="about" class="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="k" style="color:var(--green)">About Aqizo</div>
+      <h2 class="title">Aqizo International</h2>
+      <p class="lead">Your trusted partner in premium Indian spices and agro-products</p>
+    </div>
+ 
+    <div class="contact-flex">
+      <div class="contact-left">
+        <div class="panel reveal">
+          <h3>Our Story</h3>
+          <p>Aqizo International is a trusted name in the global export of premium Indian spices and agro-products. Based in India, we specialize in delivering high-quality rice, chilli, coriander, cumin, sesame, turmeric and other authentic spices to international markets.</p>
+          <p>With a commitment to purity, flavor and freshness, we ensure every product reflects the rich heritage and taste of Indian agriculture. Our focus on quality, timely delivery and customer satisfaction makes us a reliable partner in the world of spice exports.</p>
+          <div class="badges" style="margin-top:15px">
+            <span class="badge">100% Natural</span>
+            <span class="badge">Pure Veg</span>
+            <span class="badge">Premium Quality</span>
+            <span class="badge">Global Reach</span>
+          </div>
+        </div>
+      </div>
+ 
+      <div class="contact-right">
+        <div class="panel reveal">
+          <h3>Why Choose Us</h3>
+          <p><strong>Trusted Experience:</strong><br />Deep industry knowledge and expertise in spice exports</p>
+          <p><strong>Comprehensive Range:</strong><br />Wide variety of authentic Indian spices and rice</p>
+          <p><strong>Quality Certified:</strong><br />FSSAI, ISO, and HACCP certified ensuring international standards</p>
+          <p><strong>Global Presence:</strong><br />Reliable supply chain serving customers worldwide</p>
+          <p><strong>Quality Assurance:</strong><br />Every batch tested for purity, authenticity and freshness</p>
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <div class="container">
+      <div>Aqizo International. All rights reserved.</div>
+      <div>Aqizo Spices</div>
+    </div>
+  </footer>
+
+<script>
+  /* ===== Hero slideshow with fading captions ===== */
+  (function(){
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const caption = document.getElementById('heroCaption');
+
+    // Set up rotating captions matching slides
+    const captions = [
+      {
+        kicker:'Aqizo Spices',
+        title:'A World of Flavor Awaits',
+        text:'Discover the vibrant colors, intoxicating aromas, and authentic tastes of India\'s finest spices. 100% natural, pure, and ethically sourced.',
+        ctas:[
+          {href:'#products', text:'Explore Our Range', alt:false},
+          {href:'#about', text:'Our Story', alt:false}
+        ]
+      },
+      {
+        kicker:'Premium Quality',
+        title:'Handpicked Excellence',
+        text:'Each spice is carefully selected from India\'s most fertile regions, ensuring premium quality and authentic flavor in every batch.',
+        ctas:[
+          {href:'#products', text:'View Collection', alt:false},
+          {href:'#catalogue', text:'Download Brochure', alt:true}
+        ]
+      },
+      {
+        kicker:'Global Reach',
+        title:'From Our Fields to Your Table',
+        text:'Trusted by chefs and home cooks worldwide. Experience the difference of authentic Indian spices in your kitchen today.',
+        ctas:[
+          {href:'#catalogue', text:'See Our Products', alt:false},
+          {href:'#contact', text:'Contact Us', alt:true}
+        ]
+      },
+      {
+        kicker:'Aqizo Promise',
+        title:'Pure. Potent. Perfect.',
+        text:'Our commitment to quality ensures you get the freshest, most flavorful spices with maximum health benefits and zero additives.',
+        ctas:[
+          {href:'#about', text:'Our Process', alt:false},
+          {href:'#contact', text:'Contact Us', alt:true}
+        ]
+      }
+    ];
+
+    let index = 0;
+    function setCaption(i){
+      const data = captions[i % captions.length];
+      caption.classList.remove('show');
+      // Swap after fade-out
+      setTimeout(()=>{
+        caption.innerHTML = `
+          <div class="kicker">${data.kicker}</div>
+          <h1>${data.title}</h1>
+          <p>${data.text}</p>
+          <div class="hero-cta">
+            ${data.ctas.map(c => `<a class="btn ${c.alt?'alt':''}" href="${c.href}">${c.text}</a>`).join('')}
+          </div>`;
+        caption.classList.add('show');
+      }, 250);
+    }
+
+    function show(i){
+      slides.forEach((s,idx)=> s.classList.toggle('active', idx===i));
+      setCaption(i);
+    }
+
+    // initial
+    caption.classList.add('show');
+    let timer = setInterval(()=>{ index = (index+1)%slides.length; show(index); }, 4000);
+
+    // pause on hover
+    document.querySelector('header.hero').addEventListener('mouseenter', ()=>clearInterval(timer));
+    document.querySelector('header.hero').addEventListener('mouseleave', ()=> timer = setInterval(()=>{ index=(index+1)%slides.length; show(index); }, 4000));
+  })();
+
+  /* ===== Reveal on scroll (fade-in sections/cards) ===== */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+  /* ===== Basic demo form handler (no backend) ===== */
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    const txt = btn.textContent;
+    btn.textContent = 'Sending…';
+    btn.disabled = true;
+    setTimeout(()=>{
+      alert('Thank you! We will get back to you shortly.');
+      btn.textContent = txt;
+      btn.disabled = false;
+      this.reset();
+    }, 900);
+  });
+</script>
+</body>
+</html>
