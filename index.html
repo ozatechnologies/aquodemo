@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Aqizo International — Spices & Rice Export</title>
 <meta name="description" content="Aqizo International exports premium Indian spices and rice worldwide. 100% natural. Pure veg." />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -25,8 +26,8 @@
   section{scroll-margin-top:84px}
 
   /* topbar + nav */
-  .topbar{background:var(--green);color:#e9f3ee;font-size:14px}
-  .topbar .container{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 20px}
+  .topbar{background:var(--green);color:#ffffff;font-size:14px;padding: 10px 0}
+  .topbar .container{padding:8px 20px; text-align: center;}
   .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
   .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between}
   .brand{display:flex;gap:10px;align-items:center}
@@ -106,6 +107,46 @@
   .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s ease}
   .reveal.visible{opacity:1;transform:translateY(0)}
 
+  /* Stats Counter */
+  .counter {
+    font-size: 42px;
+    font-weight: 500; /* Changed from 700 to 500 for medium weight */
+    color: var(--green);
+    margin-bottom: 10px;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .stat {
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .stat:hover {
+    transform: translateY(-5px);
+  }
+  .stat h3 {
+    margin: 12px 0 8px;
+    color: var(--dark);
+    font-size: 18px;
+  }
+  .stat p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.8;
+  }
+  .stat .plus {
+    font-size: 42px;
+    font-weight: 500; /* Matched to counter weight */
+    color: var(--green);
+    margin-left: 2px;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle; /* Changed from top to middle */
+    margin-top: 0; /* Removed negative margin */
+  }
+
+
   /* responsive */
   @media (max-width:1100px){
     .grid-sq{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -126,8 +167,8 @@
 
   <!-- Top bar -->
   <div class="topbar">
-    <div class="container">
-      <centre><div>Luxury in Every Aroma, Quality in Every Grain.</div></centre>
+    <div class="container" style="display: flex; justify-content: center; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.5px; font-size: 1.1em; text-transform: uppercase;">
+      <div>Luxury in Every Aroma, Quality in Every Grain</div>
     </div>
   </div>
 
@@ -149,10 +190,11 @@
   <!-- Hero slideshow -->
   <header class="hero" aria-label="Aqizo slideshow">
     <!-- Hero Slides -->
-    <div class="slide active" style="background-image:url('https://pollinations.ai/p/A%20premium%20flat-lay%20food%20photography%20composition%3A%20multiple%20elegant%20bowls%20and%20plates%2C%20each%20filled%20with%20different%20Indian%20spices%20(turmeric%2C%20chili%20powder%2C%20cumin%20seeds%2C%20coriander%2C%20cinnamon%20sticks%2C%20star%20anise%2C%20cardamom)%20and%20fluffy%20basmati%20rice.%20Stylish%20dark%20matte%20black%20background%20for%20high%20contrast.%20Dramatic%20studio%20lighting%20with%20soft%20shadows%2C%20highlighting%20the%20rich%20textures%20and%20vibrant%20colors%20of%20the%20spices.%20Minimalist%20yet%20luxurious%20ad-style%20layout%2C%20top-view%20arrangement%2C%20ultra%20high-resolution%2C%20professional%20food%20magazine%20aesthetic.?width=720&height=1280&seed=10124&enhance=true&nologo=true&model=flux');"></div>
+    <div class="slide active" style="background-image:url('https://media.istockphoto.com/id/1147235336/photo/spices-herbs-rice-various-beans-and-seasonings-for-cooking-on-dark-backgraund-with-copy-space.jpg?s=612x612&w=0&k=20&c=EYjKX-fMG4tzIatfUTqTGEwM2uyy3VYiZNffpx6cHtU=');">
+    </div>
     <div class="slide" style="background-image:url('https://img.freepik.com/premium-photo/directly-shot-various-spices-wooden-table_1048944-20733959.jpg');"></div>
     <div class="slide" style="background-image:url('https://img.freepik.com/premium-photo/cropped-hand-man-picking-leaves_1048944-23425436.jpg');"></div>
-    <div class="slide" style="background-image:url('https://pollinations.ai/p/A%20premium%20flat-lay%20food%20photography%20composition%3A%20multiple%20elegant%20bowls%20and%20plates%2C%20each%20filled%20with%20different%20Indian%20spices%20(turmeric%2C%20chili%20powder%2C%20cumin%20seeds%2C%20coriander%2C%20cinnamon%20sticks%2C%20star%20anise%2C%20cardamom)%20and%20fluffy%20basmati%20rice.%20Stylish%20dark%20matte%20black%20background%20for%20high%20contrast.%20Dramatic%20studio%20lighting%20with%20soft%20shadows%2C%20highlighting%20the%20rich%20textures%20and%20vibrant%20colors%20of%20the%20spices.%20Minimalist%20yet%20luxurious%20ad-style%20layout%2C%20top-view%20arrangement%2C%20ultra%20high-resolution%2C%20professional%20food%20magazine%20aesthetic.?width=720&height=1280&seed=10124&enhance=true&nologo=true&model=flux');"></div>
+    <div class="slide" style="background-image:url('https://media.istockphoto.com/id/1147235336/photo/spices-herbs-rice-various-beans-and-seasonings-for-cooking-on-dark-backgraund-with-copy-space.jpg?s=612x612&w=0&k=20&c=EYjKX-fMG4tzIatfUTqTGEwM2uyy3VYiZNffpx6cHtU=');"></div>
 
     <!-- Caption -->
     <div class="hero-content" id="heroCaption">
@@ -229,13 +271,41 @@
     </div>
   </section>
   
+  <!-- Stats Section -->
+  <section class="band" style="padding: 80px 0;">
+    <div class="container">
+      <div class="stats">
+        <div class="stat reveal">
+          <div class="counter" data-target="7">0</div><span class="plus">+</span>
+          <h3>Years of Experience</h3>
+          <p>Delivering quality spices worldwide</p>
+        </div>
+        <div class="stat reveal">
+          <div class="counter" data-target="18">0</div><span class="plus">+</span>
+          <h3>Countries Served</h3>
+          <p>Global reach with local expertise</p>
+        </div>
+        <div class="stat reveal">
+          <div class="counter" data-target="50">0</div><span class="plus">+</span>
+          <h3>Happy Clients</h3>
+          <p>Trusted by businesses worldwide</p>
+        </div>
+        <div class="stat reveal">
+          <div class="counter" data-target="40">0</div><span class="plus">+</span>
+          <h3>Products</h3>
+          <p>Wide range of premium spices</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Contact Section -->
-<section id="contact" class="contact">
-  <div class="container">
-    <div class="section-head reveal">
-      <div class="k" style="color:var(--gold)">Let's Talk</div>
-      <h2 class="title">Contact Us</h2>
-      <p class="lead">Get in touch with us for inquiries, quotes, or to place an order</p>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="k" style="color:var(--gold)">Let's Talk</div>
+        <h2 class="title">Contact Us</h2>
+        <p class="lead">Get in touch with us for inquiries, quotes, or to place an order</p>
     </div>
  
     <div class="contact-flex">
@@ -392,6 +462,63 @@
     // initial
     caption.classList.add('show');
     let timer = setInterval(()=>{ index = (index+1)%slides.length; show(index); }, 4000);
+
+    // Faster counter animation
+    const counters = document.querySelectorAll('.counter');
+    const duration = 1500; // 1.5 seconds total duration
+    const frameDuration = 10; // Faster frame updates
+    const totalFrames = Math.round(duration / frameDuration);
+    const easeOutQuad = t => t * (2 - t); // Keep the smooth easing but make it faster
+
+    function animateCounter() {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-target');
+        let frame = 0;
+        const countTo = target;
+        const startTime = Date.now();
+        
+        function updateCounter() {
+          frame++;
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const currentCount = Math.round(countTo * easeOutQuad(progress));
+          
+          counter.innerText = currentCount;
+          
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          } else {
+            counter.innerText = countTo; // Ensure final value is exact
+          }
+        }
+        
+        requestAnimationFrame(updateCounter);
+      });
+    }
+
+    // Start counter when section is in view with scroll animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Reset counters to 0
+          document.querySelectorAll('.counter').forEach(counter => {
+            counter.innerText = '0';
+          });
+          // Start animation after a small delay
+          setTimeout(animateCounter, 300);
+          // Only animate once
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { 
+      threshold: 0.5,
+      rootMargin: '0px 0px -50px 0px' // Start animation slightly before element is in view
+    });
+
+    // Observe each stat
+    document.querySelectorAll('.stat').forEach(stat => {
+      observer.observe(stat);
+    });
 
     // pause on hover
     document.querySelector('header.hero').addEventListener('mouseenter', ()=>clearInterval(timer));
