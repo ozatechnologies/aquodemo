@@ -28,14 +28,70 @@
   .topbar{background:var(--green);color:#e9f3ee;font-size:14px}
   .topbar .container{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 20px}
   .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
-  .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between}
+  .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between;position:relative}
   .brand{display:flex;gap:10px;align-items:center}
   .brand strong{color:var(--green);font-weight:700;letter-spacing:.3px}
-  .menu{display:flex;gap:22px}
-  .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease}
+  .menu{display:flex;gap:12px;align-items:center}
+  .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding:6px 12px;border-radius:20px;transition:all 0.3s ease;white-space:nowrap}
   .menu a:hover{color:var(--green)}
-  .menu a[href="#contact"], .menu a.active{background-color: var(--green); color: white; opacity: 1}
-  .menu a[href="#contact"]:hover, .menu a.active:hover{background-color: #09482a; color: white}
+  .menu a[href="#contact"], .menu a.active{background-color:var(--green);color:white;opacity:1}
+  .menu a[href="#contact"]:hover, .menu a.active:hover{background-color:#09482a;color:white}
+  
+  /* Mobile menu button */
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--dark);
+    padding: 8px;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-btn {
+      display: block;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+    
+    .menu {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      background: white;
+      flex-direction: column;
+      padding: 15px 0;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      transform: translateY(-150%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+    }
+    
+    .menu.active {
+      transform: translateY(0);
+    }
+    
+    .menu a {
+      width: 100%;
+      text-align: center;
+      padding: 10px 15px;
+      border-radius: 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .menu a[href="#contact"] {
+      background: none;
+      color: var(--dark);
+    }
+    
+    .menu a.active {
+      background: var(--green);
+      color: white;
+    }
+  }
   .btn{display:inline-block;background:var(--green);color:#fff;border:1px solid var(--green);padding:10px 16px;border-radius:999px;font-weight:600;letter-spacing:.3px}
   .btn.alt{background:transparent;color:var(--green)}
 
@@ -116,9 +172,24 @@
     .stats{grid-template-columns:1fr 1fr}
     .contact-grid{grid-template-columns:1fr}
   }
-  @media (max-width:640px){
-    h1{font-size:34px}
+  @media (max-width:768px){
     .grid-sq{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .card .body{padding:12px}
+    .card h3{font-size:15px; margin-bottom:4px}
+    .card p{font-size:13px; line-height:1.4}
+  }
+  @media (max-width:480px){
+    h1{font-size:28px}
+    .grid-sq{gap:10px}
+    .card .body{padding:10px}
+    .card h3{font-size:14px}
+    .card p{font-size:12px}
+    .section-head .k{font-size:11px}
+    .section-head .title{font-size:24px; margin:4px 0}
+    .section-head .lead{font-size:14px}
+  }
+  @media (max-width:360px){
+    .grid-sq{grid-template-columns:1fr}
   }
 </style>
 </head>
@@ -126,16 +197,22 @@
   <!-- Top bar -->
   <div class="topbar">
     <div class="container">
-      <div>Luxury in Every Aroma, Quality in Every Grain.</div>
+      <div>aqizointernational11@gmail.com</div>
+      <div>+91 84870 27771 • +91 91041 41300</div>
     </div>
   </div>
-    
+
   <!-- Nav -->
   <nav class="nav">
     <div class="container">
       <div class="brand">
         <img src="aql.png" alt="Aqizo International" style="height: 40px; width: auto;">
       </div>
+      <button class="menu-btn" aria-label="Menu">
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+      </button>
       <div class="menu">
         <a href="index.html">Home</a>
         <a href="products.html" class="active">Products</a>
@@ -167,28 +244,28 @@
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background-image:url('https://5.imimg.com/data5/VD/QV/MY-2991473/1509-basmati-rice.jpg')"></div>
+          <div class="thumb" style="background-image:url('https://rukminim2.flixcart.com/image/704/844/klqx30w0/rice/1/9/l/10-white-1121-pack-of-10-basmati-rice-pouch-real-basmati-original-imagyt9atvhkghgc.jpeg?q=90&crop=false')"></div>
           <div class="body">
             <h3>1509 Basmati Rice</h3>
             <p>Premium, delicate aroma, soft texture. Daily meals & light biryani.</p>
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background-image:url('https://plus.unsplash.com/premium_photo-1723925093264-40b6b957c44d?w=800&auto=format&fit=crop&q=80')"></div>
+          <div class="thumb" style="background-image:url('https://flourworks.in/wp-content/uploads/2023/06/1-12.jpeg')"></div>
           <div class="body">
             <h3>Pusa Basmati Rice</h3>
             <p>Classic basmati; Steam & Sella options for home and catering.</p>
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background-image:url('https://i.ibb.co/rGSnnD3Z/IMG-20250820-WA0004.jpg')"></div>
+          <div class="thumb" style="background-image:url('https://i.ibb.co/rGSnnD3Z/IMG-20250820-WA0004.jpg'); background-size: 180%; background-position: center;"></div>
           <div class="body">
             <h3>Jeerakasala Rice</h3>
             <p>Premium short grain from Kerala; quick cooking, rich aroma.</p>
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background-image:url('https://plus.unsplash.com/premium_photo-1723925093264-40b6b957c44d?w=800&auto=format&fit=crop&q=80')"></div>
+          <div class="thumb" style="background-image:url('https://www.panchamrutha.com/cdn/shop/files/WhatsAppImage2024-05-12at2.06.40PM.jpg?v=1745237151&width=1946')"></div>
           <div class="body">
             <h3>Lachkari Kolam</h3>
             <p>Soft texture, natural aroma; Raw & Steam variants.</p>
@@ -202,7 +279,7 @@
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background-image:url('https://plus.unsplash.com/premium_photo-1723925093264-40b6b957c44d?w=800&auto=format&fit=crop&q=80')"></div>
+          <div class="thumb" style="background-image:url('https://cpimg.tistatic.com/09505822/b/4/1121-Basmati-Rice.jpg')"></div>
           <div class="body">
             <h3>Premium Basmati</h3>
             <p>Long grain, aromatic rice perfect for biryanis and pulao.</p>
@@ -258,14 +335,14 @@
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background-image:url('https://hospitalityinsights.ehl.edu/hubfs/EHL-Passugg_Blog_Kurkuma_Titelbild_001.jpg')"></div>
+          <div class="thumb" style="background-image:url('https://static.wixstatic.com/media/2fee2e_efa1059f92cb4393a3c1e052af72f9fd~mv2.jpg/v1/fill/w_980%2Ch_980%2Cal_c%2Cq_85%2Cusm_0.66_1.00_0.01%2Cenc_avif%2Cquality_auto/2fee2e_efa1059f92cb4393a3c1e052af72f9fd~mv2.jpg')"></div>
           <div class="body">
             <h3>Turmeric</h3>
             <p>Golden yellow, high curcumin, naturally aromatic.</p>
           </div>
         </article>
         <article class="card">
-          <div class="thumb" style="background-image:url('https://png.pngtree.com/background/20230316/original/pngtree-heap-of-whole-cumin-seeds-isolated-on-white-vector-picture-image_2144054.jpg')"></div>
+          <div class="thumb" style="background-image:url('https://www.adidevgroup.com/img/products/ipm-cumin-seed.jpg')"></div>
           <div class="body">
             <h3>Cumin</h3>
             <p>Warm, earthy, essential oil rich; a global staple.</p>
@@ -283,6 +360,20 @@
           <div class="body">
             <h3>Coriander Seeds</h3>
             <p>Citrusy-earthy aroma; sun-dried and cleaned.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" style="background-image:url('https://organicmandya.com/cdn/shop/files/CuminPowder_40d5c1d7-1123-48ca-b1c2-15e3fbb44cc5.jpg?v=1745487414&width=1000')"></div>
+          <div class="body">
+            <h3>Cumin Powder</h3>
+            <p>Finely ground from premium quality cumin seeds. Rich, warm flavor perfect for curries, soups, and spice blends.</p>
+          </div>
+        </article>
+        <article class="card">
+          <div class="thumb" style="background-image:url('https://pollinations.ai/p/black%20pepper,%20cardamom%20green%20n%20black,%20cloves,%20differen%20tbowls,%20studio%20photography,%20food%20photography,%20upper%20angle%0A?width=960&height=1706&seed=344&enhance=true&nologo=true&model=flux')"></div>
+          <div class="body">
+            <h3>Premium Spice Trio</h3>
+            <p>Black Pepper, Cardamom (Green & Black), and Cloves. Hand-selected, premium quality whole spices for authentic flavor and aroma.</p>
           </div>
         </article>
       </div>
@@ -375,6 +466,34 @@
   </footer>
 
 <script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const menu = document.querySelector('.menu');
+    const menuSpans = menuBtn.querySelectorAll('span');
+    
+    menuBtn.addEventListener('click', function() {
+      menu.classList.toggle('active');
+      menuBtn.classList.toggle('active');
+      
+      // Animate hamburger to X
+      menuSpans[0].style.transform = menuBtn.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+      menuSpans[1].style.opacity = menuBtn.classList.contains('active') ? '0' : '1';
+      menuSpans[2].style.transform = menuBtn.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : 'none';
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        menuBtn.classList.remove('active');
+        menuSpans[0].style.transform = 'none';
+        menuSpans[1].style.opacity = '1';
+        menuSpans[2].style.transform = 'none';
+      });
+    });
+  });
+
   /* ===== Hero slideshow with fading captions ===== */
   (function(){
     const slides = Array.from(document.querySelectorAll('.slide'));
