@@ -29,14 +29,71 @@
   .topbar{background:var(--green);color:#ffffff;font-size:14px;padding: 10px 0}
   .topbar .container{padding:8px 20px; text-align: center;}
   .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
-  .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between}
+  .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between;position:relative}
   .brand{display:flex;gap:10px;align-items:center}
   .brand strong{color:var(--green);font-weight:700;letter-spacing:.3px}
-  .menu{display:flex;gap:22px}
-  .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease}
+  .menu{display:flex;gap:12px;align-items:center}
+  .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding:6px 12px;border-radius:20px;transition:all 0.3s ease;white-space:nowrap}
   .menu a:hover{color:var(--green)}
-  .menu a[href="#contact"]{background-color: var(--green); color: white; opacity: 1}
-  .menu a[href="#contact"]:hover{background-color: #09482a; color: white}
+  .menu a[href="#contact"], .menu a.active{background-color:var(--green);color:white;opacity:1}
+  .menu a[href="#contact"]:hover, .menu a.active:hover{background-color:#09482a;color:white}
+  
+  /* Mobile menu button */
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+  }
+  
+  @media (max-width: 768px) {
+    .menu-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 24px;
+      position: relative;
+    }
+    
+    .menu {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      width: 100%;
+      background: white;
+      flex-direction: column;
+      padding: 15px 0;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      transform: translateY(-150%);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+    }
+    
+    .menu.active {
+      transform: translateY(0);
+    }
+    
+    .menu a {
+      width: 100%;
+      text-align: center;
+      padding: 12px 15px;
+      border-radius: 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .menu a[href="#contact"] {
+      background: none;
+      color: var(--dark);
+    }
+    
+    .menu a.active {
+      background: var(--green);
+      color: white;
+    }
+  }
   .btn{display:inline-block;background:var(--green);color:#fff;border:1px solid var(--green);padding:10px 16px;border-radius:999px;font-weight:600;letter-spacing:.3px}
   .btn.alt{background:transparent;color:var(--green)}
 
@@ -178,6 +235,11 @@
       <div class="brand">
         <img src="aql.png" alt="Aqizo International" style="height: 40px; width: auto;">
       </div>
+      <button class="menu-btn" aria-label="Menu">
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+      </button>
       <div class="menu">
         <a href="#about">About</a>
         <a href="products.html">Products</a>
@@ -186,6 +248,36 @@
       </div>
     </div>
   </nav>
+  
+  <script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const menu = document.querySelector('.menu');
+    const menuSpans = menuBtn.querySelectorAll('span');
+    
+    menuBtn.addEventListener('click', function() {
+      menu.classList.toggle('active');
+      menuBtn.classList.toggle('active');
+      
+      // Animate hamburger to X
+      menuSpans[0].style.transform = menuBtn.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+      menuSpans[1].style.opacity = menuBtn.classList.contains('active') ? '0' : '1';
+      menuSpans[2].style.transform = menuBtn.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : 'none';
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        menuBtn.classList.remove('active');
+        menuSpans[0].style.transform = 'none';
+        menuSpans[1].style.opacity = '1';
+        menuSpans[2].style.transform = 'none';
+      });
+    });
+  });
+  </script>
 
   <!-- Hero slideshow -->
   <header class="hero" aria-label="Aqizo slideshow">

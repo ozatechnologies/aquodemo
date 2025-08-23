@@ -27,13 +27,70 @@
     .topbar{background:var(--green);color:#e9f3ee;font-size:14px}
     .topbar .container{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 20px}
     .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
-    .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between}
+    .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between;position:relative}
     .brand{display:flex;gap:10px;align-items:center}
-    .menu{display:flex;gap:22px}
-    .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding: 8px 16px; border-radius: 20px; transition: all 0.3s ease}
+    .menu{display:flex;gap:12px;align-items:center}
+    .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding:6px 12px;border-radius:20px;transition:all 0.3s ease;white-space:nowrap}
     .menu a:hover{color:var(--green)}
-    .menu a.active{background-color: var(--green); color: white; opacity: 1}
-    .menu a.active:hover{background-color: #09482a;}
+    .menu a[href="#contact"], .menu a.active{background-color:var(--green);color:white;opacity:1}
+    .menu a[href="#contact"]:hover, .menu a.active:hover{background-color:#09482a;color:white}
+    
+    /* Mobile menu button */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      z-index: 1001;
+    }
+    
+    @media (max-width: 768px) {
+      .menu-btn {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 30px;
+        height: 24px;
+        position: relative;
+      }
+      
+      .menu {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 15px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 1000;
+      }
+      
+      .menu.active {
+        transform: translateY(0);
+      }
+      
+      .menu a {
+        width: 100%;
+        text-align: center;
+        padding: 12px 15px;
+        border-radius: 0;
+        border-bottom: 1px solid #eee;
+      }
+      
+      .menu a[href="#contact"] {
+        background: none;
+        color: var(--dark);
+      }
+      
+      .menu a.active {
+        background: var(--green);
+        color: white;
+      }
+    }
 
     /* section titles */
     .k{letter-spacing:.28em;text-transform:uppercase;font-size:12px;opacity:.9}
@@ -144,9 +201,8 @@
 <body>
   <!-- Top bar -->
   <div class="topbar">
-    <div class="container">
-      <div>aqizointernational11@gmail.com</div>
-      <div>+91 84870 27771 • +91 91041 41300</div>
+    <div class="container" style="display: flex; justify-content: center; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.5px; font-size: 1.1em; text-transform: uppercase;">
+      <div>Luxury in Every Aroma, Quality in Every Grain</div>
     </div>
   </div>
 
@@ -156,6 +212,11 @@
       <div class="brand">
         <img src="aql.png" alt="Aqizo International" style="height: 40px; width: auto;">
       </div>
+      <button class="menu-btn" aria-label="Menu">
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+        <span style="display:block;width:24px;height:2px;background:var(--dark);margin:5px 0;transition:all 0.3s ease"></span>
+      </button>
       <div class="menu">
         <a href="index.html">Home</a>
         <a href="products.html">Products</a>
@@ -164,6 +225,36 @@
       </div>
     </div>
   </nav>
+  
+  <script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.querySelector('.menu-btn');
+    const menu = document.querySelector('.menu');
+    const menuSpans = menuBtn.querySelectorAll('span');
+    
+    menuBtn.addEventListener('click', function() {
+      menu.classList.toggle('active');
+      menuBtn.classList.toggle('active');
+      
+      // Animate hamburger to X
+      menuSpans[0].style.transform = menuBtn.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+      menuSpans[1].style.opacity = menuBtn.classList.contains('active') ? '0' : '1';
+      menuSpans[2].style.transform = menuBtn.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : 'none';
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        menuBtn.classList.remove('active');
+        menuSpans[0].style.transform = 'none';
+        menuSpans[1].style.opacity = '1';
+        menuSpans[2].style.transform = 'none';
+      });
+    });
+  });
+  </script>
 
   <!-- Hero Section -->
   <header class="process-hero">
