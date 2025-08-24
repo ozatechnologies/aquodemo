@@ -7,6 +7,8 @@
 <meta name="description" content="Aqizo International exports premium Indian spices and rice worldwide. 100% natural. Pure veg." />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/forms.css">
 
 <style>
   :root{
@@ -424,20 +426,78 @@
  
     <div class="contact-flex">
       <div class="contact-left">
-        <div class="panel reveal form">
-          <h3>Send a Message</h3>
-          <form id="contactForm">
-            <div class="row">
-              <input type="text" name="name" placeholder="Your Name" required />
-              <input type="email" name="email" placeholder="Your Email" required />
-            </div>
-            <div class="row">
-              <input type="tel" name="phone" placeholder="Your Phone" required />
-              <input type="text" name="company" placeholder="Company (optional)" />
-            </div>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button class="btn" type="submit">Send Message</button>
-          </form>
+        <div class="panel reveal form" style="padding: 20px; overflow: hidden;">
+          <div id="zf_div_fSZnfC_MymTL-cI4amAsX0e73Fm3DLyOwyhSB1gn9pI"></div>
+          <script type="text/javascript">
+          (function() {
+            try{
+              var f = document.createElement("iframe");
+              var ifrmSrc = 'https://forms.zohopublic.in/devozamailgm1/form/AQIZOFORM/formperma/fSZnfC_MymTL-cI4amAsX0e73Fm3DLyOwyhSB1gn9pI?zf_rszfm=1';
+              
+              try{
+                if (typeof ZFAdvLead != "undefined" && typeof zfutm_zfAdvLead != "undefined") {
+                  for(var prmIdx = 0; prmIdx < ZFAdvLead.utmPNameArr.length; prmIdx++) {
+                    var utmPm = ZFAdvLead.utmPNameArr[prmIdx];
+                    utmPm = (ZFAdvLead.isSameDomian && (ZFAdvLead.utmcustPNameArr.indexOf(utmPm) == -1)) ? "zf_" + utmPm : utmPm;
+                    var utmVal = zfutm_zfAdvLead.zfautm_gC_enc(ZFAdvLead.utmPNameArr[prmIdx]);
+                    if (typeof utmVal !== "undefined" && utmVal != "") {
+                      ifrmSrc += (ifrmSrc.indexOf('?') > 0 ? '&' : '?') + utmPm + '=' + utmVal;
+                    }
+                  }
+                }
+                if (typeof ZFLead !== "undefined" && typeof zfutm_zfLead !== "undefined") {
+                  for(var prmIdx = 0; prmIdx < ZFLead.utmPNameArr.length; prmIdx++) {
+                    var utmPm = ZFLead.utmPNameArr[prmIdx];
+                    var utmVal = zfutm_zfLead.zfutm_gC_enc(ZFLead.utmPNameArr[prmIdx]);
+                    if (typeof utmVal !== "undefined" && utmVal != "") {
+                      ifrmSrc += (ifrmSrc.indexOf('?') > 0 ? '&' : '?') + utmPm + '=' + utmVal;
+                    }
+                  }
+                }
+              } catch(e){}
+              
+              f.src = ifrmSrc;
+              f.style.border = "none";
+              f.style.height = "993px";
+              f.style.width = "100%";
+              f.style.transition = "all 0.5s ease";
+              f.setAttribute("aria-label", 'AQIZO FORM');
+              
+              var d = document.getElementById("zf_div_fSZnfC_MymTL-cI4amAsX0e73Fm3DLyOwyhSB1gn9pI");
+              d.appendChild(f);
+              
+              window.addEventListener('message', function(){
+                var evntData = event.data;
+                if(evntData && evntData.constructor == String) {
+                  var zf_ifrm_data = evntData.split("|");
+                  if (zf_ifrm_data.length == 2 || zf_ifrm_data.length == 3) {
+                    var zf_perma = zf_ifrm_data[0];
+                    var zf_ifrm_ht_nw = (parseInt(zf_ifrm_data[1], 10) + 15) + "px";
+                    var iframe = document.getElementById("zf_div_fSZnfC_MymTL-cI4amAsX0e73Fm3DLyOwyhSB1gn9pI").getElementsByTagName("iframe")[0];
+                    if ((iframe.src).indexOf('formperma') > 0 && (iframe.src).indexOf(zf_perma) > 0) {
+                      var prevIframeHeight = iframe.style.height;
+                      var zf_tout = false;
+                      if(zf_ifrm_data.length == 3) {
+                        iframe.scrollIntoView();
+                        zf_tout = true;
+                      }
+
+                      if (prevIframeHeight != zf_ifrm_ht_nw) {
+                        if(zf_tout) {
+                          setTimeout(function(){
+                            iframe.style.height = zf_ifrm_ht_nw;
+                          },500);
+                        } else {
+                          iframe.style.height = zf_ifrm_ht_nw;
+                        }
+                      }
+                    }
+                  }
+                }
+              }, false);
+            } catch(e){}
+          })();
+          </script>
         </div>
       </div>
  
@@ -666,5 +726,7 @@
     }, 900);
   });
 </script>
+<script src="script.js"></script>
+<script src="js/form-handler.js"></script>
 </body>
 </html>

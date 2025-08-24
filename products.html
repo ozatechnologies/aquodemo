@@ -6,6 +6,8 @@
 <title>Aqizo International — Spices & Rice Export</title>
 <meta name="description" content="Aqizo International exports premium Indian spices and rice worldwide. 100% natural. Pure veg." />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/forms.css">
 
 <style>
   :root{
@@ -449,18 +451,14 @@
       <div class="contact-grid">
         <div class="panel reveal form">
           <h3>Send a Message</h3>
-          <form id="contactForm">
-            <div class="row">
-              <input type="text" name="name" placeholder="Your Name" required />
-              <input type="email" name="email" placeholder="Your Email" required />
-            </div>
-            <div class="row">
-              <input type="tel" name="phone" placeholder="Your Phone" required />
-              <input type="text" name="company" placeholder="Company (optional)" />
-            </div>
-            <textarea name="message" placeholder="Your Message" required></textarea>
-            <button class="btn" type="submit">Send Message</button>
-          </form>
+        <div>
+          <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdaQHOxfwUavjbqILb9Rx0tNJgUnHNrQmlrXV5bjnwdWsLjdw/viewform?usp=header" method="POST" target="_blank">
+            <input type="text" name="entry.1801840444" id="name" placeholder="Your Name" required>
+            <input type="email" name="entry.1773112227" id="email" placeholder="Your Email" required>
+            <input type="text" name="entry.818844871" id="subject" placeholder="Subject" required>
+            <textarea name="entry.894019770" id="message" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
         </div>
 
         <div class="panel reveal">
@@ -626,5 +624,7 @@
     }, 900);
   });
 </script>
+<script src="script.js"></script>
+<script src="js/form-handler.js"></script>
 </body>
 </html>
