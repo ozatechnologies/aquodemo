@@ -26,10 +26,15 @@
     /* topbar + nav */
     .topbar{background:var(--green);color:#e9f3ee;font-size:14px}
     .topbar .container{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 20px}
-    .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
-    .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between;position:relative}
+    .nav{background:#fff;border-bottom:1px solid #eee}
+    .nav .container{max-width:1200px;margin:0 auto;padding:0 20px;position:relative}
+  .nav-content{display:flex;flex-direction:column;align-items:center;padding:15px 0;}
+  .logo-container{text-align:center;margin-bottom:10px;}
+  .logo{height:50px;width:auto;max-width:100%;}
+  .tagline{text-align:center;margin-bottom:15px;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:0.5px;font-size:1.1em;text-transform:uppercase;color:#333;}
+  .menu-container{width:100%;display:flex;justify-content:center;position:relative;}
     .brand{display:flex;gap:10px;align-items:center}
-    .menu{display:flex;gap:12px;align-items:center}
+    .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;}
     .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding:6px 12px;border-radius:20px;transition:all 0.3s ease;white-space:nowrap}
     .menu a:hover{color:var(--green)}
     .menu a[href="#contact"], .menu a.active{background-color:var(--green);color:white;opacity:1}
@@ -68,13 +73,19 @@
     }
     
     @media (max-width: 768px) {
+      .tagline{font-size:0.9em;padding:0 15px;}
+      .menu{flex-direction:column;width:100%;padding:15px 0;display:none;}
+      .menu.active{display:flex;}
       .menu-btn {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         width: 30px;
         height: 24px;
-        position: relative;
+        position: absolute;
+        right: 20px;
+        top: 50%;
+        transform: translateY(-50%);
       }
       
       .menu {
@@ -221,29 +232,36 @@
   </style>
 </head>
 <body>
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="container" style="display: flex; justify-content: center; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.5px; font-size: 1.1em; text-transform: uppercase;">
-      <div>Luxury in Every Aroma, Quality in Every Grain</div>
-    </div>
-  </div>
-
-  <!-- Navigation -->
+<!-- Nav -->
   <nav class="nav">
     <div class="container">
-      <div class="brand">
-        <img src="logoaql.png" alt="Aqizo International" style="height: 40px; width: auto;">
-      </div>
-      <button class="menu-btn" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="process.html" class="active">Our Process</a>
-        <a href="index.html#contact">Contact</a>
+      <div class="nav-content">
+        <!-- Logo -->
+        <div class="logo-container">
+          <a href="index.html">
+            <img src="logoaql.png" alt="Aqizo International" class="logo">
+          </a>
+        </div>
+        
+        <!-- Tagline -->
+        <div class="tagline">
+          <div>Luxury in Every Aroma, Quality in Every Grain</div>
+        </div>
+        
+        <!-- Menu -->
+        <div class="menu-container">
+          <button class="menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="process.html" class="active">Our Process</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>

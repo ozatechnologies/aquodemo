@@ -29,11 +29,16 @@
   /* topbar + nav */
   .topbar{background:var(--green);color:#e9f3ee;font-size:14px}
   .topbar .container{display:flex;gap:18px;justify-content:space-between;align-items:center;padding:8px 20px}
-  .nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid #eee}
-  .nav .container{height:64px;display:flex;align-items:center;justify-content:space-between;position:relative}
+  .nav{background:#fff;border-bottom:1px solid #eee}
+  .nav .container{max-width:1200px;margin:0 auto;padding:0 20px;position:relative}
+  .nav-content{display:flex;flex-direction:column;align-items:center;padding:15px 0;}
+  .logo-container{text-align:center;margin-bottom:10px;}
+  .logo{height:50px;width:auto;max-width:100%;}
+  .tagline{text-align:center;margin-bottom:15px;font-family:'DM Sans',sans-serif;font-weight:500;letter-spacing:0.5px;font-size:1.1em;text-transform:uppercase;color:#333;}
+  .menu-container{width:100%;display:flex;justify-content:center;position:relative;}
   .brand{display:flex;gap:10px;align-items:center}
   .brand strong{color:var(--green);font-weight:700;letter-spacing:.3px}
-  .menu{display:flex;gap:12px;align-items:center}
+  .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;}
   .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding:6px 12px;border-radius:20px;transition:all 0.3s ease;white-space:nowrap}
   .menu a:hover{color:var(--green)}
   .menu a[href="#contact"], .menu a.active{background-color:var(--green);color:white;opacity:1}
@@ -72,13 +77,19 @@
   }
   
   @media (max-width: 768px) {
+    .tagline{font-size:0.9em;padding:0 15px;}
+    .menu{flex-direction:column;width:100%;padding:15px 0;display:none;}
+    .menu.active{display:flex;}
     .menu-btn {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       width: 30px;
       height: 24px;
-      position: relative;
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
     }
     
     .menu {
@@ -170,10 +181,16 @@
 
   /* contact */
   .contact{padding:72px 0;background:#f8f9f7}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .panel{background:#fff;border:1px solid #eee;border-radius:14px;padding:20px}
-  .panel h3{margin:0 0 10px;color:var(--green)}
-  .panel p{margin:0 0 8px}
+  .contact-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:start}
+  .panel{background:#fff;border:1px solid #eee;border-radius:14px;padding:30px;height:100%;box-sizing:border-box}
+  .panel h3{margin:0 0 20px;color:var(--green);font-size:1.5rem}
+  .panel p{margin:0 0 16px;line-height:1.6}
+  .panel strong{display:block;color:var(--dark);margin-bottom:5px}
+  .certifications{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:30px}
+  .certification-item{text-align:center;padding:15px;border:1px solid #eee;border-radius:8px}
+  .certification-item img{max-width:80px;height:auto;margin-bottom:10px}
+  .contact-info a{color:var(--green);text-decoration:none}
+  .contact-info a:hover{text-decoration:underline}
   .form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
   .form input,.form textarea{width:100%;padding:12px 12px;border:1px solid #e6e6e6;border-radius:10px;font:inherit}
   .form textarea{min-height:130px;resize:vertical}
@@ -220,7 +237,7 @@
 </head>
 <body>
   <!-- Top bar -->
-  <div class="topbar">
+  <div class="topbar" style="display: none;">
     <div class="container" style="display: flex; justify-content: center; font-family: 'DM Sans', sans-serif; font-weight: 500; letter-spacing: 0.5px; font-size: 1.1em; text-transform: uppercase;">
       <div>Luxury in Every Aroma, Quality in Every Grain</div>
     </div>
@@ -229,19 +246,33 @@
   <!-- Nav -->
   <nav class="nav">
     <div class="container">
-      <div class="brand">
-        <img src="logoaql.png" alt="Aqizo International" style="height: 40px; width: auto;">
-      </div>
-      <button class="menu-btn" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="products.html" class="active">Products</a>
-        <a href="process.html">Our Process</a>
-        <a href="index.html#contact">Contact</a>
+      <div class="nav-content">
+        <!-- Logo -->
+        <div class="logo-container">
+          <a href="index.html">
+            <img src="logoaql.png" alt="Aqizo International" class="logo">
+          </a>
+        </div>
+        
+        <!-- Tagline -->
+        <div class="tagline">
+          <div>Luxury in Every Aroma, Quality in Every Grain</div>
+        </div>
+        
+        <!-- Menu -->
+        <div class="menu-container">
+          <button class="menu-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="products.html" class="active">Products</a>
+            <a href="process.html">Our Process</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+        </div>
       </div>
     </div>
   </nav>
@@ -444,33 +475,52 @@
         <div class="k" style="color:var(--gold)">Let's Talk</div>
         <h2 class="title">Contact Us</h2>
         <p class="lead">Get in touch for inquiries or to place an order.</p>
-        <div style="margin-top: 20px; font-size: 1.1em; color: #555; line-height: 1.6;">
-        </div>
       </div>
-
+      
       <div class="contact-grid">
+        <!-- Contact Form -->
         <div class="panel reveal form">
-          <h3>Send a Message</h3>
-        <div>
+          <h3>Send us a Message</h3>
           <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdaQHOxfwUavjbqILb9Rx0tNJgUnHNrQmlrXV5bjnwdWsLjdw/viewform?usp=header" method="POST" target="_blank">
             <input type="text" name="entry.1801840444" id="name" placeholder="Your Name" required>
             <input type="email" name="entry.1773112227" id="email" placeholder="Your Email" required>
             <input type="text" name="entry.818844871" id="subject" placeholder="Subject" required>
-            <textarea name="entry.894019770" id="message" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+            <textarea name="entry.1674297402" id="message" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn">Send Message</button>
+          </form>
         </div>
-
-        <div class="panel reveal">
+        
+        <!-- Contact Information -->
+        <div class="panel reveal contact-info">
           <h3>Contact Information</h3>
-          <p><strong>Phone:</strong><br />+91 84870 27771<br />+91 91041 41300</p>
-          <p><strong>Email:</strong><br />aqizointernational11@gmail.com</p>
-          <p><strong>Head Office:</strong><br />8A National Highway, Halvad Road, Morbi 2, Gujarat, India</p>
-          <p><strong>Instagram:</strong> <a href="https://www.instagram.com/aqizo_internationalexport/" target="_blank" style="color: var(--green); text-decoration: none;">@aqizo_internationalexport</a></p>
-          <div class="badges" style="margin-top:10px">
-            <span class="badge">FSSAI</span>
-            <span class="badge">ISO</span>
-            <span class="badge">HACCP</span>
+          <p><strong>Phone:</strong></p>
+          <p>+91 84870 27771<br>+91 91041 41300</p>
+          
+          <p><strong>Email:</strong></p>
+          <p>aqizointernational11@gmail.com</p>
+          
+          <p><strong>Head Office:</strong></p>
+          <p>8A National Highway, Halvad Road,<br>Morbi 2, Gujarat, India</p>
+          
+          <p><strong>Instagram:</strong><br>@aqizo_internationalexport</p>
+          
+          <div class="certifications">
+            <div class="certification-item">
+              <div>FSSAI</div>
+              <div>Certified</div>
+            </div>
+            <div class="certification-item">
+              <div>ISO</div>
+              <div>Certified</div>
+            </div>
+            <div class="certification-item">
+              <div>HACCP</div>
+              <div>Certified</div>
+            </div>
+            <div class="certification-item">
+              <div>100%</div>
+              <div>Natural</div>
+            </div>
           </div>
         </div>
       </div>
