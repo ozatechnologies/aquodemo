@@ -34,92 +34,67 @@
   .logo-container{text-align:center;margin-bottom:5px;}
   .logo{height:50px;width:auto;max-width:100%;}
   .tagline{font-family:'DM Sans',sans-serif;font-size:14px;color:#666;margin-bottom:10px;text-align:center;}
-  .menu-container{width:100%;display:flex;justify-content:center;position:relative;}
-  .brand{display:flex;gap:10px;align-items:center}
-  .brand strong{color:var(--green);font-weight:700;letter-spacing:.3px}
-  .menu{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;}
-  .menu a{color:var(--dark);text-decoration:none;font-weight:600;font-size:14px;opacity:.9;padding:6px 12px;border-radius:20px;transition:all 0.3s ease;white-space:nowrap}
-  .menu a:hover{color:var(--green)}
-  .menu a[href="#contact"], .menu a.active{background-color:var(--green);color:white;opacity:1}
-  .menu a[href="#contact"]:hover, .menu a.active:hover{background-color:#09482a;color:white}
   
-  /* Mobile menu button */
-  .menu-btn {
-    display: none;
-    align-items: center;
+  /* Text Menu */
+  .text-menu {
+    display: flex;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 24px;
-    color: #0b5d3b;
-    z-index: 1001;
-    position: relative;
-    padding: 0;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+    width: 100%;
   }
   
-  .menu-btn span {
-    display: none; /* Hide the spans */
+  .text-menu a {
+    color: var(--green);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: inline-block; /* Ensures smooth transform */
   }
   
-  .menu-btn::before {
-    content: '≡';
-    font-size: 32px;
-    line-height: 1;
+  /* Desktop hover effect */
+  @media (min-width: 769px) {
+    .text-menu a:hover {
+      font-size: 15px;
+      transform: translateY(-1px);
+    }
   }
   
-  .menu-btn.active::before {
-    content: '×';
-    font-size: 36px;
+  .text-menu a:hover {
+    color: white;
+    background-color: var(--green);
+  }
+  
+  .text-menu a[href="#contact"] {
+    background-color: var(--green);
+    color: white;
+  }
+  
+  /* Hide any remaining menu button and dropdown menu */
+  .menu-btn, .menu {
+    display: none !important;
   }
   
   @media (max-width: 768px) {
-    .tagline{font-size:0.9em;padding:0 15px;}
-    .menu{flex-direction:column;width:100%;padding:15px 0;display:none;}
-    .menu.active{display:flex;}
-    .menu-btn {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 30px;
-      height: 24px;
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
+    .tagline {
+      font-size: 0.9em;
+      padding: 0 15px;
+      margin-bottom: 15px;
     }
     
-    .menu {
-      position: fixed;
-      top: 64px;
-      left: 0;
-      width: 100%;
-      background: white;
-      flex-direction: column;
-      padding: 15px 0;
-      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-      transform: translateY(-150%);
-      transition: transform 0.3s ease-in-out;
-      z-index: 1000;
+    .text-menu {
+      gap: 8px;
+      padding: 0 10px;
     }
     
-    .menu.active {
-      transform: translateY(0);
-    }
-    
-    .menu a {
-      width: 100%;
-      text-align: center;
-      padding: 12px 15px;
-      border-radius: 0;
-      border-bottom: 1px solid #eee;
-    }
-    
-    .menu a[href="#contact"] {
-      background: none;
-      color: var(--dark);
+    .text-menu a {
+      font-size: 13px;
+      padding: 4px 10px;
     }
     
     .menu a.active {
@@ -264,19 +239,12 @@
         <div class="logo-container">
           <img src="logoaql.png" alt="Aqizo International" class="logo">
           <div class="tagline">Luxury in Every Aroma, Quality in Every Grain</div>
-        </div>
-        
-        <!-- Menu -->
-        <div class="menu-container">
-          <button class="menu-btn" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-          <div class="menu">
+          <!-- Text Menu -->
+          <div class="text-menu">
+            <a href="index.html">Home</a>
             <a href="#about">About</a>
             <a href="products.html">Products</a>
-            <a href="process.html">Our Process</a>
+            <a href="process.html">Process</a>
             <a href="#contact">Contact</a>
           </div>
         </div>
@@ -285,33 +253,7 @@
   </nav>
   
   <script>
-  // Mobile menu toggle
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuBtn = document.querySelector('.menu-btn');
-    const menu = document.querySelector('.menu');
-    const menuSpans = menuBtn.querySelectorAll('span');
-    
-    menuBtn.addEventListener('click', function() {
-      menu.classList.toggle('active');
-      menuBtn.classList.toggle('active');
-      
-      // Animate hamburger to X
-      menuSpans[0].style.transform = menuBtn.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
-      menuSpans[1].style.opacity = menuBtn.classList.contains('active') ? '0' : '1';
-      menuSpans[2].style.transform = menuBtn.classList.contains('active') ? 'rotate(-45deg) translate(7px, -6px)' : 'none';
-    });
-    
-    // Close menu when clicking on a link
-    document.querySelectorAll('.menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('active');
-        menuBtn.classList.remove('active');
-        menuSpans[0].style.transform = 'none';
-        menuSpans[1].style.opacity = '1';
-        menuSpans[2].style.transform = 'none';
-      });
-    });
-  });
+    // Any additional JavaScript can go here
   </script>
 
   <!-- Hero slideshow -->
