@@ -190,16 +190,18 @@
   .btn.alt{background:transparent;color:var(--green)}
 
   /* hero slideshow */
-  header.hero{position:relative;min-height:88vh;color:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  header.hero{position:relative;min-height:88vh;color:#fff !important;display:flex;align-items:center;justify-content:center;overflow:hidden}
   .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
   .slide.active{opacity:1}
   .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25))}
-  .hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 20px;opacity:0;transform:translateY(12px);transition:opacity .8s ease, transform .8s ease}
+  .hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 20px;opacity:0;transform:translateY(12px);transition:opacity .8s ease, transform .8s ease; color: #fff !important;}
+  .hero-content *:not(.btn):not(.btn *) {color: #fff !important;}
   .hero-content.show{opacity:1;transform:translateY(0)}
-  .kicker{letter-spacing:.26em;text-transform:uppercase;color:#fff;opacity:.95;font-size:12px}
-  h1{margin:.35rem 0 1rem;font-size:42px;line-height:1.15;color:#fff}
-  .hero p{margin:.4rem 0 0;font-size:18px;opacity:.95}
+  .kicker{letter-spacing:.26em;text-transform:uppercase;color:#fff !important;opacity:.95;font-size:12px}
+  h1{margin:.35rem 0 1rem;font-size:42px;line-height:1.15;color:#fff !important}
+  .hero p{margin:.4rem 0 0;font-size:18px;opacity:.95; color: #fff !important;}
   .hero-cta{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  /* Button styles remain unchanged */
   .hero-cta .btn.alt{background-color:var(--green);color:white;border-color:var(--green);opacity:1}
   .hero-cta .btn.alt:hover{background-color:#09482a;border-color:#09482a}
 
@@ -485,7 +487,7 @@
         <article class="card reveal">
           <div class="thumb" style="background-image:url('https://pollinations.ai/p/black%20pepper,%20cardamom%20green%20n%20black,%20cloves,%20differen%20tbowls,%20studio%20photography,%20food%20photography,%20upper%20angle%0A?width=960&height=1706&seed=344&enhance=true&nologo=true&model=flux')"></div>
           <div class="body">
-            <h3>Premium Spice Trio</h3>
+            <h3 style="color: white;">Premium Spice Trio</h3>
             <p>Black Pepper, Cardamom (Green & Black), and Cloves. Hand-selected, premium quality whole spices for authentic flavor and aroma.</p>
           </div>
         </article>
@@ -497,9 +499,9 @@
   <section id="about" class="band">
     <div class="container">
       <div class="section-head reveal">
-        <div class="k" style="color:var(--green)">International Catalogue</div>
-        <h2 class="title">Step Into a World of Spices and Aromas</h2>
-        <p class="lead">Collection sourced directly from the heart of India. 100% Natural. Pure Veg.</p>
+        <div class="k" style="color: black;">Aqizo Spices</div>
+        <h2 class="title" style="color: black;">Step Into a World of Spices and Aromas</h2>
+        <p class="lead" style="color: black;">Collection sourced directly from the heart of India. 100% Natural. Pure Veg.</p>
       </div>
 
       <div class="grid-2">
@@ -751,8 +753,8 @@
   <!-- Footer -->
   <footer class="foot">
     <div class="container">
-      <div>Aqizo International. All rights reserved.</div>
-      <div>Aqizo Spices</div>
+      <div style="color: white;">Aqizo International. All rights reserved.</div>
+      <div style="color: white;">Aqizo Spices</div>
     </div>
   </footer>
 
@@ -885,7 +887,7 @@
     // Set up rotating captions matching slides
     const captions = [
       {
-        kicker:'Aqizo Spices',
+        kicker:'<span style="color:white">Aqizo Spices</span>',
         title:'A World of Flavor Awaits',
         text:'Discover the vibrant colors, intoxicating aromas, and authentic tastes of India\'s finest spices. 100% natural, pure, and ethically sourced.',
         ctas:[
@@ -894,7 +896,7 @@
         ]
       },
       {
-        kicker:'Premium Quality',
+        kicker:'<span style="color:white">Premium Quality</span>',
         title:'Handpicked Excellence',
         text:'Each spice is carefully selected from India\'s most fertile regions, ensuring premium quality and authentic flavor in every batch.',
         ctas:[

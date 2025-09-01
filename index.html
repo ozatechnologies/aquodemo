@@ -318,7 +318,7 @@
   .btn.alt{background:transparent;color:var(--green)}
 
   /* hero slideshow */
-  header.hero{position:relative;min-height:88vh;color:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+  header.hero{position:relative;min-height:88vh;color:#fff !important;display:flex;align-items:center;justify-content:center;overflow:hidden}
   .slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease}
   .slide.active{opacity:1}
   .slide::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.25))}
@@ -331,40 +331,21 @@
     opacity:0;
     transform: translateY(30px);
     transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+    color: #fff !important;
+  }
+  .hero-content *:not(.btn):not(.btn *) {
+    color: #fff !important;
   }
   .hero-content.show {
     opacity: 1;
     transform: translateY(0);
     animation: fadeIn 1s var(--ease-out) forwards;
   }
-  .kicker{
-    letter-spacing:.26em;
-    text-transform:uppercase;
-    color:var(--green);
-    opacity:.95;
-    font-size:12px;
-    font-weight:600;
-    display:inline-block;
-    position:relative;
-    padding-bottom:8px;
-    margin-bottom:15px;
-  }
-  .kicker::after {
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    width:40px;
-    height:2px;
-    background:var(--gold);
-    transition: width 0.4s var(--ease-out);
-  }
-  .kicker:hover::after {
-    width:80px;
-  }
-  h1{margin:.35rem 0 1rem;font-size:42px;line-height:1.15;color:#fff}
-  .hero p{margin:.4rem 0 0;font-size:18px;opacity:.95}
+  .kicker{letter-spacing:.26em;text-transform:uppercase;color:#fff !important;opacity:.95;font-size:12px}
+  h1{margin:.35rem 0 1rem;font-size:42px;line-height:1.15;color:#fff !important}
+  .hero p{margin:.4rem 0 0;font-size:18px;opacity:.95; color: #fff !important;}
   .hero-cta{margin-top:16px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  /* Button styles remain unchanged */
   .hero-cta .btn.alt{background-color:var(--green);color:white;border-color:var(--green);opacity:1}
   .hero-cta .btn.alt:hover{background-color:#09482a;border-color:#09482a}
 
