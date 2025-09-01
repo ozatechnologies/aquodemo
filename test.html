@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Aqizo International</title>
+  <style>
+    :root {
+      --green: #11373a;
+    }
+    body {
+      margin: 0;
+      font-family: Montserrat, sans-serif;
+      overflow: hidden;
+    }
+    header.hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+    .hero img.active {
+      opacity: 1;
+    }
+
+    /* Overlays */
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: white;
+      transform: translateY(-100%);
+    }
+    .layer100 { opacity: 1; }
+    .layer60  { opacity: 0.6; }
+    .layer30  { opacity: 0.3; }
+    .layer20  { opacity: 0.2; }
+
+    /* Intro text */
+    .intro-text {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--green);
+      opacity: 0;
+    }
+    .intro-text.show {
+      bottom: 20%;
+      opacity: 1;
+      transition: all 1s ease;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <!-- Slideshow images -->
+    <img src="https://picsum.photos/id/1011/1600/900" class="active">
+    <img src="https://picsum.photos/id/1015/1600/900">
+    <img src="https://picsum.photos/id/1016/1600/900">
+    <img src="https://picsum.photos/id/1021/1600/900">
+
+    <!-- Overlays -->
+    <div class="overlay layer100"></div>
+    <div class="overlay layer60"></div>
+    <div class="overlay layer30"></div>
+    <div class="overlay layer20"></div>
+
+    <!-- Intro Text -->
+    <div class="intro-text">Welcome to Aqizo International</div>
+  </header>
+
+  <script>
+    // Animate overlays sequentially
+    const overlays = document.querySelectorAll(".overlay");
+    overlays.forEach((layer, i) => {
+      setTimeout(() => {
+        layer.style.transition = "transform 0.8s ease";
+        layer.style.transform = "translateY(0)";
+        setTimeout(() => {
+          layer.style.transform = "translateY(100%)";
+        }, 800);
+      }, i * 500);
+    });
+
+    // Animate text
+    setTimeout(() => {
+      document.querySelector(".intro-text").classList.add("show");
+    }, overlays.length * 600);
+
+    // Slideshow
+    let slides = document.querySelectorAll(".hero img");
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 4000);
+  </script>
+</body>
+</html>

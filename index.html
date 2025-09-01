@@ -21,6 +21,90 @@
     --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
   }
 
+  /* Enhanced Scroll Animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Slide in animations with bounce effect */
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .slide-in-left.active,
+  .slide-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Feature cards with staggered animations */
+  .feature-card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: calc(0.1s * var(--delay, 0));
+  }
+  
+  .feature-card:nth-child(odd) {
+    transform: translateX(-60px) scale(0.95);
+  }
+  
+  .feature-card:nth-child(even) {
+    transform: translateX(60px) scale(0.95);
+  }
+  
+  .feature-card.active {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  
+  /* Contact section with staggered animations */
+  .contact-info .info-grid > div {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: calc(0.1s * var(--delay, 0));
+  }
+  
+  .contact-info .info-grid > div.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Certification animations with pop effect */
+  .cert-grid > div {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: calc(0.1s * var(--delay, 0));
+  }
+  
+  .cert-grid > div.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  
+  /* Hover effects */
+  .feature-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
   @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -520,9 +604,13 @@
 
     <!-- Caption -->
     <div class="hero-content" id="heroCaption">
-      <div class="kicker">Aqizo Spices</div>
-      <h1>International Catalogue</h1>
-      <p>Step into a world of spices and aromas. Our vibrant collection is sourced from the heart of India — 100% natural. Pure veg.</p>
+      <section class="hero">
+    <div class="container">
+      <h1 class="slide-in-left">International Catalogue</h1>
+      <p class="lead slide-in-right">Step Into a World of Spices and Aromas</p>
+      <p class="slide-in-left">Collection sourced directly from the heart of India. 100% Natural. Pure Veg.</p>
+    </div>
+  </section>
       <div class="hero-cta">
         <a class="btn" href="products.html">Explore Products</a>
         <a class="btn" href="process.html">Our Process</a>
@@ -776,8 +864,67 @@
   </footer>
 
 <script>
-  // Add animation classes to elements when they come into view
+  // Enhanced scroll reveal with staggered and random animations
+  function initScrollReveal() {
+    // Elements to animate
+    const elements = {
+      reveals: document.querySelectorAll('.reveal'),
+      slideLefts: document.querySelectorAll('.slide-in-left'),
+      slideRights: document.querySelectorAll('.slide-in-right'),
+      featureCards: document.querySelectorAll('.feature-card'),
+      contactItems: document.querySelectorAll('.contact-info .info-grid > div'),
+      certItems: document.querySelectorAll('.cert-grid > div')
+    };
+    
+    // Configure animation delays
+    const setDelays = (items, baseDelay = 0.1) => {
+      items.forEach((item, index) => {
+        item.style.setProperty('--delay', index);
+        // Add slight random variation to timing
+        const randomOffset = (Math.random() * 0.1) - 0.05; // -0.05 to 0.05
+        item.style.transitionDelay = `${(index * baseDelay) + randomOffset}s`;
+      });
+    };
+    
+    // Set up intersection observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Add a small random delay for natural feel (0-150ms)
+          const delay = Math.random() * 150;
+          
+          setTimeout(() => {
+            entry.target.classList.add('active');
+            // Add additional effects based on element type
+            if (entry.target.classList.contains('feature-card')) {
+              entry.target.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            }
+          }, delay);
+          
+          // Unobserve after animation plays once
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+    
+    // Observe all elements
+    Object.values(elements).forEach(group => {
+      group.forEach(el => observer.observe(el));
+    });
+    
+    // Set staggered delays
+    setDelays(elements.featureCards, 0.15);
+    setDelays(elements.contactItems, 0.1);
+    setDelays(elements.certItems, 0.15);
+  }
+
+  // Initialize animations when DOM is loaded
   document.addEventListener('DOMContentLoaded', function() {
+    initScrollReveal();
+    
     // Add animation classes to cards with staggered delays
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, index) => {

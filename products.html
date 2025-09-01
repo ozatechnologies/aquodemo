@@ -10,6 +10,64 @@
 <link rel="stylesheet" href="css/forms.css">
 
 <style>
+  /* Enhanced Scroll Animations */
+  .reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Slide in animations with bounce effect */
+  .slide-in-left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .slide-in-right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .slide-in-left.active,
+  .slide-in-right.active {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  /* Product cards animations */
+  .card {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: calc(0.1s * var(--delay, 0));
+  }
+  
+  .card:nth-child(odd) {
+    transform: translateX(-60px) scale(0.95);
+  }
+  
+  .card:nth-child(even) {
+    transform: translateX(60px) scale(0.95);
+  }
+  
+  .card.active {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  
+  /* Hover effects */
+  .card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
   :root{
     --green:#0b5d3b;
     --gold:#c5a34a;
@@ -280,10 +338,10 @@
   <!-- Products (square frames) -->
   <section id="products" class="products">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="k" style="color:var(--gold)">Catalogue</div>
-        <h2 class="title">Our Products</h2>
-        <p class="lead">Discover our premium selection of Indian rice and spices. Square tiles below mirror your catalogue categories.</p>
+      <div class="section-head">
+        <div class="k slide-in-left" style="color:var(--gold)">Catalogue</div>
+        <h2 class="title slide-in-right">Our Products</h2>
+        <p class="lead slide-in-left">Discover our premium selection of Indian rice and spices. Square tiles below mirror your catalogue categories.</p>
       </div>
 
       <!-- Rice grid -->
@@ -291,56 +349,56 @@
         <div class="k" style="color:var(--green)">Indian Rice</div>
       </div>
       <div class="grid-sq reveal" style="margin-top:10px">
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://rukminim2.flixcart.com/image/704/844/klqx30w0/rice/1/9/l/10-white-1121-pack-of-10-basmati-rice-pouch-real-basmati-original-imagyt9atvhkghgc.jpeg?q=90&crop=false')"></div>
           <div class="body">
             <h3>1121 Basmati Rice</h3>
             <p>Ultra-long, aromatic, beautifully non-sticky. White Sella</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://5.imimg.com/data5/VD/QV/MY-2991473/1509-basmati-rice.jpg')"></div>
           <div class="body">
             <h3>1509 Basmati Rice</h3>
             <p>Premium, delicate aroma, soft texture. Daily meals & light biryani.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://flourworks.in/wp-content/uploads/2023/06/1-12.jpeg')"></div>
           <div class="body">
             <h3>Pusa Basmati Rice</h3>
             <p>Classic basmati; Steam & Sella options for home and catering.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://i.ibb.co/rGSnnD3Z/IMG-20250820-WA0004.jpg'); background-size: 180%; background-position: center;"></div>
           <div class="body">
             <h3>Jeerakasala Rice</h3>
             <p>Premium short grain from Kerala; quick cooking, rich aroma.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://www.panchamrutha.com/cdn/shop/files/WhatsAppImage2024-05-12at2.06.40PM.jpg?v=1745237151&width=1946')"></div>
           <div class="body">
             <h3>Lachkari Kolam</h3>
             <p>Soft texture, natural aroma; Raw & Steam variants.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1612708074992-c7936e82c99b?w=800&auto=format&fit=crop&q=80')"></div>
           <div class="body">
             <h3>Sona Masoori</h3>
             <p>Lightweight, mild aroma; loved for daily South Indian dishes.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://cpimg.tistatic.com/09505822/b/4/1121-Basmati-Rice.jpg')"></div>
           <div class="body">
             <h3>Premium Basmati</h3>
             <p>Long grain, aromatic rice perfect for biryanis and pulao.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://images.unsplash.com/photo-1586201375761-83865001e31c?w=800&auto=format&fit=crop&q=80')"></div>
           <div class="body">
             <h3>Brown Basmati</h3>
@@ -354,77 +412,77 @@
         <div class="k" style="color:var(--gold)">Key Spices</div>
       </div>
       <div class="grid-sq reveal" style="margin-top:10px">
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://www.whiskaffair.com/wp-content/uploads/2020/05/Green-Chilli-Pickle-2-1.jpg')"></div>
           <div class="body">
             <h3>Green Chilli</h3>
             <p>Fresh, crisp heat. Great for curries, stir-fries and pickles.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://www.farmatma.in/wp-content/uploads/2018/01/chilli-cultivation.jpg')"></div>
           <div class="body">
             <h3>G4 & G5 Green Chilli</h3>
             <p>Glossy, bright green pods with fiery taste and excellent shelf life. Premium export quality.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://pramoda.co.in/wp-content/uploads/2018/12/Teja.jpg')"></div>
           <div class="body">
             <h3>Teja Chilli</h3>
             <p>Intensely hot with rich red color. Popular in Indian and international cuisines.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://131183018.cdn6.editmysite.com/uploads/1/3/1/1/131183018/QJ5MSA7KXFEFFQZ4OTLZW3YJ.jpeg')"></div>
           <div class="body">
             <h3>Jwala Chilli</h3>
             <p>Medium hot with a unique flavor profile. Perfect for pickles and chutneys.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://tonsvalley.shop/wp-content/uploads/2024/05/WhatsApp-Image-2021-12-18-at-13.59.45.jpeg')"></div>
           <div class="body">
             <h3>Red Chilli Powder</h3>
             <p>Vivid color, bold flavor. Guntur Sannam & Teja variants.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTHs0HQWQhm5js16SFpaGAiQBgFFOlcOr-dnDD_kuRjh0jwnnumFeaD6WazYpG-RC3qjQ-KZ7vF4Fjjsi8l-R0XAQ')"></div>
           <div class="body">
             <h3>Turmeric</h3>
             <p>Golden yellow, high curcumin, naturally aromatic.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://www.adidevgroup.com/img/products/ipm-cumin-seed.jpg')"></div>
           <div class="body">
             <h3>Cumin</h3>
             <p>Warm, earthy, essential oil rich; a global staple.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://i.etsystatic.com/12995391/r/il/53749e/1489200903/il_570xN.1489200903_o8az.jpg')"></div>
           <div class="body">
             <h3>Sesame Seeds</h3>
             <p>White & Black — clean, uniform, nutrient-dense.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://www.jalaramagri.com/wp-content/uploads/2019/10/coriander-seeds-1.jpg')"></div>
           <div class="body">
             <h3>Coriander Seeds</h3>
             <p>Citrusy-earthy aroma; sun-dried and cleaned.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://organicmandya.com/cdn/shop/files/CuminPowder_40d5c1d7-1123-48ca-b1c2-15e3fbb44cc5.jpg?v=1745487414&width=1000')"></div>
           <div class="body">
             <h3>Cumin Powder</h3>
             <p>Finely ground from premium quality cumin seeds. Rich, warm flavor perfect for curries, soups, and spice blends.</p>
           </div>
         </article>
-        <article class="card">
+        <article class="card reveal">
           <div class="thumb" style="background-image:url('https://pollinations.ai/p/black%20pepper,%20cardamom%20green%20n%20black,%20cloves,%20differen%20tbowls,%20studio%20photography,%20food%20photography,%20upper%20angle%0A?width=960&height=1706&seed=344&enhance=true&nologo=true&model=flux')"></div>
           <div class="body">
             <h3>Premium Spice Trio</h3>
@@ -471,15 +529,15 @@
   <!-- Contact -->
   <section id="contact" class="contact">
     <div class="container">
-      <div class="section-head reveal">
-        <div class="k" style="color:var(--gold)">Let's Talk</div>
-        <h2 class="title">Contact Us</h2>
-        <p class="lead">Get in touch for inquiries or to place an order.</p>
+      <div class="section-head">
+        <div class="k slide-in-left" style="color:var(--gold)">Let's Talk</div>
+        <h2 class="title slide-in-right">Contact Us</h2>
+        <p class="lead slide-in-left">Get in touch for inquiries or to place an order.</p>
       </div>
       
       <div class="contact-grid">
         <!-- Contact Form -->
-        <div class="panel reveal form">
+        <div class="panel slide-in-left form">
           <h3>Send us a Message</h3>
           <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdaQHOxfwUavjbqILb9Rx0tNJgUnHNrQmlrXV5bjnwdWsLjdw/viewform?usp=header" method="POST" target="_blank">
             <input type="text" name="entry.1801840444" id="name" placeholder="Your Name" required>
@@ -491,33 +549,44 @@
         </div>
         
         <!-- Contact Information -->
-        <div class="panel reveal contact-info">
+        <div class="panel slide-in-right contact-info">
           <h3>Contact Information</h3>
-          <p><strong>Phone:</strong></p>
-          <p>+91 84870 27771<br>+91 91041 41300</p>
-          
-          <p><strong>Email:</strong></p>
-          <p>aqizointernational11@gmail.com</p>
-          
-          <p><strong>Head Office:</strong></p>
-          <p>8A National Highway, Halvad Road,<br>Morbi 2, Gujarat, India</p>
-          
-          <p><strong>Instagram:</strong><br>@aqizo_internationalexport</p>
+          <div class="info-grid">
+            <div class="info-item">
+              <strong>Phone:</strong>
+              <p>+91 84870 27771<br>+91 91041 41300</p>
+            </div>
+            
+            <div class="info-item">
+              <strong>Email:</strong>
+              <p>aqizointernational11@gmail.com</p>
+            </div>
+            
+            <div class="info-item">
+              <strong>Head Office:</strong>
+              <p>8A National Highway, Halvad Road,<br>Morbi 2, Gujarat, India</p>
+            </div>
+            
+            <div class="info-item">
+              <strong>Instagram:</strong>
+              <p>@aqizo_internationalexport</p>
+            </div>
+          </div>
           
           <div class="certifications">
-            <div class="certification-item">
+            <div class="certification-item reveal">
               <div>FSSAI</div>
               <div>Certified</div>
             </div>
-            <div class="certification-item">
+            <div class="certification-item reveal">
               <div>ISO</div>
               <div>Certified</div>
             </div>
-            <div class="certification-item">
+            <div class="certification-item reveal">
               <div>HACCP</div>
               <div>Certified</div>
             </div>
-            <div class="certification-item">
+            <div class="certification-item reveal">
               <div>100%</div>
               <div>Natural</div>
             </div>
@@ -526,6 +595,158 @@
       </div>
     </div>
   </section>
+  
+  <style>
+    /* Enhanced Contact Section Styles */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 30px;
+    }
+    
+    .contact .panel {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+    
+    .contact .panel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .contact-info h3 {
+      margin-top: 0;
+      color: var(--green);
+      position: relative;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+    }
+    
+    .contact-info h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 3px;
+      background: var(--gold);
+    }
+    
+    .info-grid {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .info-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+      transition-delay: calc(0.1s * var(--delay, 0));
+    }
+    
+    .info-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .certifications {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+    
+    .certification-item {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 12px 8px;
+      text-align: center;
+      transition: all 0.3s ease;
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    
+    .certification-item.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    .certification-item:hover {
+      background: var(--green);
+      color: white;
+      transform: translateY(-3px);
+    }
+    
+    .certification-item div:first-child {
+      font-weight: 700;
+      font-size: 1.2em;
+      margin-bottom: 5px;
+    }
+    
+    .certification-item div:last-child {
+      font-size: 0.8em;
+      opacity: 0.9;
+    }
+    
+    /* Form Styles */
+    .form input,
+    .form textarea {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .form textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+    
+    .form input:focus,
+    .form textarea:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(11, 93, 59, 0.1);
+    }
+    
+    .form .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      background: var(--green);
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .form .btn:hover {
+      background: #09482a;
+      transform: translateY(-2px);
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .certifications {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
 
   <!-- Footer -->
   <footer class="foot">
@@ -536,11 +757,96 @@
   </footer>
 
 <script>
-  // Mobile menu toggle
+  // Scroll reveal animation
+  function revealOnScroll() {
+    const reveals = document.querySelectorAll('.reveal');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          // Unobserve after animation plays once
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    reveals.forEach(reveal => {
+      observer.observe(reveal);
+    });
+  }
+
+  // Simple scroll animation function
+  function initScrollAnimations() {
+    // Set initial states
+    const animatable = document.querySelectorAll('.reveal, .slide-in-left, .slide-in-right, .card, .info-item, .certification-item');
+    
+    // Set initial styles
+    animatable.forEach(el => {
+      // Skip if already animated
+      if (el.classList.contains('animated')) return;
+      
+      // Set initial state
+      el.style.opacity = '0';
+      el.style.transition = 'all 0.8s ease-out';
+      
+      if (el.classList.contains('slide-in-left')) {
+        el.style.transform = 'translateX(-80px)';
+      } else if (el.classList.contains('slide-in-right')) {
+        el.style.transform = 'translateX(80px)';
+      } else if (el.classList.contains('card')) {
+        el.style.transform = 'translateY(40px)';
+      } else {
+        el.style.transform = 'translateY(30px)';
+      }
+    });
+    
+    // Simple scroll handler
+    function checkScroll() {
+      animatable.forEach(el => {
+        if (el.classList.contains('animated')) return;
+        
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        
+        // If element is in viewport
+        if (elementTop < windowHeight - 50) {
+          el.classList.add('active', 'animated');
+          el.style.opacity = '1';
+          el.style.transform = 'translate(0, 0)';
+          
+          // Add shadow to cards
+          if (el.classList.contains('card')) {
+            el.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+          }
+        }
+      });
+    }
+    
+    // Run once on load
+    checkScroll();
+    
+    // Listen for scroll events
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    
+    // Also check on resize
+    window.addEventListener('resize', checkScroll, { passive: true });
+  }
+
+  // Initialize animations when DOM is fully loaded
   document.addEventListener('DOMContentLoaded', function() {
+    // Small delay to ensure all elements are properly rendered
+    setTimeout(() => {
+      initScrollAnimations();
+    }, 100);
+    
+    // Mobile menu toggle
     const menuBtn = document.querySelector('.menu-btn');
     const menu = document.querySelector('.menu');
-    const menuSpans = menuBtn.querySelectorAll('span');
+    const menuSpans = menuBtn?.querySelectorAll('span');
     
     menuBtn.addEventListener('click', function() {
       menu.classList.toggle('active');
