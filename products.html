@@ -239,15 +239,56 @@
   .band .stat{background:#fff;border:1px solid #eee;border-radius:14px;padding:18px;text-align:center}
   .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 
-  /* contact */
-  .contact{padding:72px 0;background:#f8f9f7}
+  /* Contact section styles */
+  .contact {
+    padding: 72px 0;
+    background: #f9f9f9;
+  }
+  
+  /* Contact info animations */
+  .info-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .info-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered animation delays */
+  .info-item:nth-child(1) { transition-delay: 0.1s; }
+  .info-item:nth-child(2) { transition-delay: 0.2s; }
+  .info-item:nth-child(3) { transition-delay: 0.3s; }
+  .info-item:nth-child(4) { transition-delay: 0.4s; }
+
   .contact-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:40px;align-items:start}
   .panel{background:#fff;border:1px solid #eee;border-radius:14px;padding:30px;height:100%;box-sizing:border-box}
   .panel h3{margin:0 0 20px;color:var(--green);font-size:1.5rem}
   .panel p{margin:0 0 16px;line-height:1.6}
   .panel strong{display:block;color:var(--dark);margin-bottom:5px}
   .certifications{display:grid;grid-template-columns:repeat(2,1fr);gap:15px;margin-top:30px}
-  .certification-item{text-align:center;padding:15px;border:1px solid #eee;border-radius:8px}
+  .certification-item {
+    text-align: center;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .certification-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Staggered animation delays for certifications */
+  .certification-item:nth-child(1) { transition-delay: 0.1s; }
+  .certification-item:nth-child(2) { transition-delay: 0.3s; }
+  .certification-item:nth-child(3) { transition-delay: 0.5s; }
+  .certification-item:nth-child(4) { transition-delay: 0.7s; }
   .certification-item img{max-width:80px;height:auto;margin-bottom:10px}
   .contact-info a{color:var(--green);text-decoration:none}
   .contact-info a:hover{text-decoration:underline}
@@ -554,22 +595,22 @@
         <div class="panel slide-in-right contact-info">
           <h3>Contact Information</h3>
           <div class="info-grid">
-            <div class="info-item">
+            <div class="info-item" data-animate>
               <strong>Phone:</strong>
               <p>+91 84870 27771<br>+91 91041 41300</p>
             </div>
             
-            <div class="info-item">
+            <div class="info-item" data-animate>
               <strong>Email:</strong>
               <p>aqizointernational11@gmail.com</p>
             </div>
             
-            <div class="info-item">
+            <div class="info-item" data-animate>
               <strong>Head Office:</strong>
               <p>8A National Highway, Halvad Road,<br>Morbi 2, Gujarat, India</p>
             </div>
             
-            <div class="info-item">
+            <div class="info-item" data-animate>
               <strong>Instagram:</strong>
               <p>@aqizo_internationalexport</p>
             </div>
@@ -840,8 +881,44 @@
 
   // Initialize animations when DOM is fully loaded
   document.addEventListener('DOMContentLoaded', function() {
+    // Animate elements when they come into view
+    const animateOnScroll = () => {
+      // Animation for contact info items
+      const infoItems = document.querySelectorAll('.info-item[data-animate]');
+      const certItems = document.querySelectorAll('.certification-item');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Animate contact info items
+            if (entry.target.classList.contains('info-item')) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+            
+            // Animate certification items
+            if (entry.target.classList.contains('certification-item')) {
+              const index = Array.from(certItems).indexOf(entry.target);
+              setTimeout(() => {
+                entry.target.classList.add('visible');
+              }, index * 300); // Stagger the certification animations
+              observer.unobserve(entry.target);
+            }
+          }
+        });
+      }, { 
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px' // Start animation slightly before element is in view
+      });
+      
+      // Observe all animatable elements
+      infoItems.forEach(item => observer.observe(item));
+      certItems.forEach(item => observer.observe(item));
+    };
+
     // Small delay to ensure all elements are properly rendered
     setTimeout(() => {
+      animateOnScroll();
       initScrollAnimations();
     }, 100);
     
